@@ -1,41 +1,44 @@
 @extends('layout')
 
-@section('title','Registro')
+@section('title')
+    <h1 class="h2">Crea tu cuenta</h1>
+    <br>
+@endsection
 
 @section('content')
     <form action="{{route('signup')}}" method="POST">
         @csrf
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <input type="text" name="username" id="username" value="{{old('username')}}" class="form-control" />
-            <label class="form-label" for="username">Nombre de usuario</label>
-        </div>
-
-        <div data-mdb-input-init class="form-outline mb-4">
+            <label class="form-label" for="name">Nombre usuario</label>
             <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" />
-            <label class="form-label" for="name">Nombre completo</label>
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control" />
             <label class="form-label" for="email">Email address</label>
+            <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control" />
         </div>
 
-        <label for="birthday">Cumpleaños:</label><br>
-        <input type="date" name="birthday" id="birthday"><br>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label for="birthday">Cumpleaños:</label><br>
+            <input type="date" name="birthday" id="birthday"><br>
+        </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock">
             <label class="form-label" for="password">Contraseña</label>
+            <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock">
             <div id="passwordHelpBlock" class="form-text">
-            La contraseña debe tener entre 8 y 20 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales ni emoji.
+                La contraseña debe tener entre 8 y 20 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales ni emoji.
             </div>
         </div>
 
-        <label for="password_confirmation">Repite la contraseña:</label><br>
-        <input type="password" name="password_confirmation" id="password_confirmation"><br>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label for="password_confirmation">Repite la contraseña:</label><br>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+        </div>
+        <br><br>
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar"><br><br>
     </form>
 
     @if ($errors->any())

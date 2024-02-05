@@ -18,9 +18,7 @@ class LoginController extends Controller
 
     public function signup (SignupRequest $request)
     {
-
         $user = new User();
-        $user->username = $request->get('username');
         $user->name = $request->get('name');
         $user->email = $request->get('email');
         $user->birthday=$request->get('birthday');
@@ -43,7 +41,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials= $request->only('username','password');
+        $credentials= $request->only('name','password');
 
         if(Auth::guard('web')->attempt($credentials)){
             $request->session()->regenerate();
