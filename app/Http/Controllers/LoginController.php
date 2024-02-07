@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         Auth:: Login($user);
 
-        return redirect()-route('users.account');
+        return redirect()-route('account');
     }
 
     public function loginform()

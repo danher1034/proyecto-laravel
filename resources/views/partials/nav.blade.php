@@ -54,8 +54,8 @@
             @else
                 <div class="d-flex align-items-center">
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a class="btn btn-secondary" role="button" href="/signupForm" aria-disabled="true">Login</a>
-                        <a class="btn btn-secondary" role="button" href="/signup" aria-disabled="true">Sign up</a>
+                        <a class="btn btn-secondary" role="button" href="loginForm" aria-disabled="true">Login</a>
+                        <a class="btn btn-secondary" role="button" href="/signupForm" aria-disabled="true">Sign up</a>
                     </div>
                 </div>
             @endauth
