@@ -7,13 +7,17 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
+
 
 class LoginController extends Controller
 {
     public function signupForm()
     {
-    return view('auth.signup');
+        if(Auth::check()){
+            return redirect()->route('users.account');
+        }else{
+            return view('auth.signup');
+        }
     }
 
     public function signup (SignupRequest $request)
@@ -27,7 +31,7 @@ class LoginController extends Controller
 
         Auth:: Login($user);
 
-        return redirect()-route('account');
+        return redirect()-route('users.account');
     }
 
     public function loginform()
@@ -57,12 +61,7 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('principal');
-    }
-
-    public function account(Request $request)
-    {
-        return view('directors.show', compact('director'));
+        return redirect()->route('index');
     }
 }
 

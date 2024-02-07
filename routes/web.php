@@ -17,12 +17,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
-});
+})->name('index');;
 
 Route::get('signupForm', [LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');
@@ -31,8 +27,7 @@ Route::get('loged', [LoginController::class, 'loged'])->name('loged');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-
 Route::get('account', function() {
     return view('users.account');
-})->name('users.account')
+})->name('account')
 ->middleware('auth');

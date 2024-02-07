@@ -1,4 +1,4 @@
-<footer class="text-center bg-body-tertiary">
+<footer class="text-center bg-body-tertiary mt-auto">
     <div style="background-color: rgba(0, 0, 0, 0.05);">
         <div class="container pt-4">
         <section class="mb-4">
