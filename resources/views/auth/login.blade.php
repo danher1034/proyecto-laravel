@@ -6,12 +6,11 @@
 @endsection
 
 @section('content')
-    <form action="{{route('signup')}}" method="POST">
+    <form action="{{route('login')}}" method="POST">
         @csrf
-
         <div data-mdb-input-init class="form-outline mb-4">
-            <label class="form-label" for="username">Nombre de usuario: </label>
-            <input type="text" name="username" id="username" value="{{old('username')}}" class="form-control">
+            <label class="form-label" for="name">Nombre de usuario: </label>
+            <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control">
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
@@ -21,4 +20,11 @@
         <br><br>
         <input type="submit" value="Enviar">
     </form>
+    @if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+    </ul>
+@endif
 @endsection

@@ -23,7 +23,6 @@ Route::get('/', function () {
 Route::get('signupForm', [LoginController::class, 'signupForm'])->name('signupForm');
 Route::post('signup', [LoginController::class, 'signup'])->name('signup');
 Route::get('loginForm', [LoginController::class, 'loginForm'])->name('loginForm');
-Route::get('loged', [LoginController::class, 'loged'])->name('loged');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 

@@ -14,7 +14,7 @@ class LoginController extends Controller
     public function signupForm()
     {
         if(Auth::check()){
-            return redirect()->route('users.account');
+            return redirect()->route('account');
         }else{
             return view('auth.signup');
         }
@@ -31,13 +31,13 @@ class LoginController extends Controller
 
         Auth:: Login($user);
 
-        return redirect()-route('users.account');
+        return redirect()-route('index');
     }
 
     public function loginform()
     {
         if(Auth::check()){
-            return redirect()->route('users.account');
+            return redirect()->route('account');
         }else{
             return view('auth.login');
         }
@@ -46,10 +46,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials= $request->only('name','password');
+        $remenberLogin= ($request->get('remember')) ? true: false;
 
-        if(Auth::guard('web')->attempt($credentials)){
+        if(Auth::guard('web')->attempt($credentials, $remenberLogin)){
             $request->session()->regenerate();
-            return redirect()->route('users.account');
+            return redirect()->route('account');
         } else{
             $error = 'Error al acceder a la aplicación';
             return view('auth.login', compact('error'));
