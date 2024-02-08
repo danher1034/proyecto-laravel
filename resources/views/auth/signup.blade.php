@@ -28,7 +28,7 @@
             <label class="form-label" for="password">Contraseña</label>
             <input type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock">
             <div id="passwordHelpBlock" class="form-text">
-                La contraseña debe tener entre 8 y 20 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales ni emoji.
+                La contraseña debe tener minimo 8, preferiblemente deberia contener letras y números, y no contener espacios, caracteres especiales ni emoji.
             </div>
         </div>
 

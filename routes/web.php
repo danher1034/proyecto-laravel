@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,11 @@ Route::post('signup', [LoginController::class, 'signup'])->name('signup');
 Route::get('loginForm', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('create', [EventController::class, 'create'])->name('create');
+Route::post('store', [EventController::class, 'store'])->name('store');
+
 
 Route::get('account', function() {
     return view('users.account');

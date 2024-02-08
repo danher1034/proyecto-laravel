@@ -12,7 +12,7 @@ class EventRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,13 +23,13 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string','min:5','max:20','unique:events'],
+            'name' => ['required','string','min:5','max:1000','unique:events'],
             'description'=> ['required','string','min:10','max:10000'],
-            'location'=> ['required','string','min:3','max:100'],
+            'location'=> ['required','string','min:3','max:1000'],
             'date' => ['required', 'date'],
-            'hour' => ['required', 'time'],
+            'hour' => ['required', 'regex:/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/'],
             'type' => ['required','string', 'in:official, exhibition, charity'],
-            'tags'=> ['required','string','min:3','max:100'],
+            'tags'=> ['required','string','min:3','max:1000'],
         ];
     }
 
@@ -37,30 +37,35 @@ class EventRequest extends FormRequest
     {
         return[
             'name.required' => 'El nombre de usuario es obligatorio.',
+            'name.string' => 'El nombre debe ser una cadena de texto.',
             'name.min' => 'El nombre de usuario debe tener como mínimo 5 caracteres.',
-            'name.max' => 'El nombre de usuario debe tener como máximo 20 caracteres.',
+            'name.max' => 'El nombre de usuario debe tener como máximo 1000 caracteres.',
             'name.unique' => 'El nombre de usuario ya existe en el sistema.',
 
             'description.required'=>'El argumento es obligatorio',
+            'description.string' => 'La descripción debe ser una cadena de texto.',
             'description.min'=>'El argumento debe tener al menos 10 caracteres',
             'description.max'=>'El argumento debe tener menos de 10000 caracteres',
 
             'location.required'=>'El localización es obligatorio',
+            'location.string' => 'La ubicación debe ser una cadena de texto.',
             'location.min'=>'El localización debe tener al menos 3 caracteres',
-            'location.max'=>'El localización debe tener menos de 100 caracteres',
+            'location.max'=>'El localización debe tener menos de 1000 caracteres',
 
-            'date.required' => 'El cumpleaños es obligatorio.',
+            'date.required' => 'La fecha es obligatoria.',
+            'date.date' => 'La fecha debe ser una fecha válida.',
 
             'hour.required' => 'La hora es obligatoria.',
+            'hour.regex' => 'La hora debe seguir el formato de 24 horas.',
 
-            'email.required' => 'EL email es obligatorio.',
-            'email.unique' => 'EL email ya existe en el sistema.',
-            'email.min' => 'El email debe tener como mínimo 10 caracteres.',
-            'email.max' => 'El email debe tener como máximo 255 caracteres.',
+            'type.required' => 'El tipo es obligatorio.',
+            'type.string' => 'El tipo debe ser una cadena de texto.',
+            'type.in' => 'El tipo debe ser uno de los siguientes: oficial, exposición, beneficencia.',
 
-            'password.required' => 'La contraseña es obligatoria.',
-            'password.confirmed' => 'Las contraseñas no coinciden.',
-            'password.min' => 'La contraseña debe tener como mínimo 8 caracteres.',
+            'tags.required' => 'Las etiquetas son obligatorias.',
+            'tags.string' => 'Las etiquetas deben ser una cadena de texto.',
+            'tags.min' => 'Las etiquetas deben tener al menos 3 caracteres.',
+            'tags.max' => 'Las etiquetas no pueden tener más de 1000 caracteres.',
         ];
     }
 }

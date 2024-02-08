@@ -52,7 +52,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->route('account');
         } else{
-            $error = 'Error al acceder a la aplicación';
+            $error = 'La contraseña o el usuario son incorrectos o no existen, intentalo de nuevo';
             return view('auth.login', compact('error'));
         }
     }
