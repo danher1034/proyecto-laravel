@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         Auth:: Login($user);
 
-        return redirect()-route('index');
+        return redirect()-route('/');
     }
 
     public function loginform()

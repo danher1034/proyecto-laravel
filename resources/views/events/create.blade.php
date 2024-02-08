@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <form action="{{route('store')}}" method="POST">
+    <form action="{{route('events/store')}}" method="POST">
         @csrf
 
         <div data-mdb-input-init class="form-outline mb-4">

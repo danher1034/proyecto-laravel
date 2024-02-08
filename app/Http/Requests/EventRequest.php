@@ -28,7 +28,7 @@ class EventRequest extends FormRequest
             'location'=> ['required','string','min:3','max:1000'],
             'date' => ['required', 'date'],
             'hour' => ['required', 'date_format:H:i:s'],
-            'type' => ['required','string', 'in:official, exhibition, charity'],
+            'type' => ['required','string', 'in:official,exhibition,charity'],
             'tags'=> ['required','string','min:3','max:1000'],
         ];
     }

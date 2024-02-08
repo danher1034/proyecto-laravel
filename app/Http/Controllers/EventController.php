@@ -14,8 +14,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::where('visibility',1)->paginate(6);
-        return view('movies.index', compact('movies'));
+        $events = Event::where('visible',1)->paginate(6);
+        return view('events.index', compact('events'));
     }
 
     /**
@@ -47,32 +47,43 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Event $event)
     {
-        //
+        return view('events.show', compact('event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Event $event)
     {
-        //
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event->name=$request->get('name');
+        $event->description=$request->get('description');
+        $event->location=$request->get('location');
+        $event->date=$request->get('date');
+        $event->hour=$request->get('hour');
+        $event->type=$request->get('type');
+        $event->tags=$request->get('tags');
+        $event->visibility=$request->has('visibility')?1:0;
+        $event->save();
+
+        return view('events.edited', compact('event'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Event $event)
     {
-        //
+        $event->delete();
+        return redirect()->route('events.index');
     }
 }

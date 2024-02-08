@@ -1,25 +1,18 @@
 @extends('layout')
 
 @section('title')
-    <a href="{{route('create')}}">Crear evento</a>
-    <h1>Listado de eventos</h1>
 @endsection
 
 @section('content')
-
-    @forelse ($events as $event)
-        <div class="mb-4 mt-4 row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-            <div *ngFor="let plato of platos | platoFilter:filterSearch;">
-                <div class="col">
-                    <div class="card">
-                        <h3><a href="{{route('events.show', $event)}}">{{$event->name}}</a></h3>
-                    </div>
-                </div>
-            </div>
+      <div class="card text-center">
+        <div class="card-header"><h2>{{$event->name}}</h2></div>
+        <div class="card-body">
+          <p class="card-text">{{$event->description}}</p>
         </div>
-    @empty
-
-    @endforelse
-
-    {{$events->links()}}
+        <ul class="list-group list-group-light list-group-small">
+            <li class="list-group-item px-4">Tipo: {{$event->type}} | Localización: {{$event->location}} | Etiquetas: {{$event->tags}}</li>
+            <li class="list-group-item px-4">{{$event->date}} | {{$event->hour}}</li>
+        </ul>
+        <div class="card-footer text-muted"> @if (Auth::user()->rol==='admin') <button type="button" class="btn btn-warning" href="">Editar eventos</button>&nbsp;<button type="button" class="btn btn-danger">Eliminar eventos</button> @endif <a type="button" class="btn btn-success"><i class="bi bi-heart"></i></a></div>
+      </div>
 @endsection

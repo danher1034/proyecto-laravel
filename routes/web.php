@@ -28,9 +28,12 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('create', [EventController::class, 'create'])->name('create');
-Route::post('store', [EventController::class, 'store'])->name('store');
-
+Route::get('events', [EventController::class, 'index'])->name('events');
+Route::get('events/create', [EventController::class, 'create'])->name('events/create');
+Route::post('events/store', [EventController::class, 'store'])->name('events/store');
+Route::get('events/show/{event}', [EventController::class, 'show'])->name('events/show');
+Route::get('events/edit/{event}', [EventController::class, 'edit'])->name('events/edit');
+Route::put('events/edited/{event}', [EventController::class, 'edited'])->name('events/edited');
 
 Route::get('account', function() {
     return view('users.account');
