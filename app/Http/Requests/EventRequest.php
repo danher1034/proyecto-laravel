@@ -27,7 +27,7 @@ class EventRequest extends FormRequest
             'description'=> ['required','string','min:10','max:10000'],
             'location'=> ['required','string','min:3','max:1000'],
             'date' => ['required', 'date'],
-            'hour' => ['required', 'regex:/^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/'],
+            'hour' => ['required', 'date_format:H:i:s'],
             'type' => ['required','string', 'in:official, exhibition, charity'],
             'tags'=> ['required','string','min:3','max:1000'],
         ];

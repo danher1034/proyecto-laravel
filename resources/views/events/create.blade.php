@@ -34,14 +34,7 @@
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="hour" class="form-label">Hora:</label>
-            <select name="hour" id="hour" class="form-select">
-                @for ($i=0; $i<24; $i++)
-                    @php
-                        $formattedHour = str_pad($i, 2, '0', STR_PAD_LEFT);
-                    @endphp
-                    <option value="{{ $formattedHour }}">{{ $formattedHour }}:00</option>
-                @endfor
-            </select>
+            <input type="hour" name="hour" id="hour" class="form-control"><br>
         </div>
 
 

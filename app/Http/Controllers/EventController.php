@@ -33,7 +33,6 @@ class EventController extends Controller
     {
         $event=new Event();
         $event->name=$request->get('name');
-        $event->slug=Str::slug($event->name);
         $event->description=$request->get('description');
         $event->location=$request->get('location');
         $event->date=$request->get('date');
