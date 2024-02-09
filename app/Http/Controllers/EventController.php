@@ -72,7 +72,7 @@ class EventController extends Controller
         $event->hour=$request->get('hour');
         $event->type=$request->get('type');
         $event->tags=$request->get('tags');
-        $event->visibility=$request->has('visibility')?1:0;
+        $event->visible=$request->has('visible')?1:0;
         $event->save();
 
         return view('events.edited', compact('event'));
@@ -84,6 +84,6 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('events.index');
+        return view('events.index', compact('events'));
     }
 }

@@ -1,8 +1,17 @@
 @extends('layout')
 
 @section('title')
-    <a href="{{route('events/create')}}">Crear película</a>
-    <h1>Lista de Eventos</h1>
+    <div class="container text-center my-auto">
+        <h1>Lista de Eventos</h1>
+        <br>
+        <br>
+        @auth
+            @if (Auth::user()->rol === 'admin')
+                <a type="button" class="btn btn-secondary" href="{{route('events/create')}}">Crear película</a>
+            @endif
+        @endauth
+    </div>
+    <br>
 @endsection
 
 @section('content')
@@ -15,8 +24,18 @@
                         <h5 class="card-title"></h5>
                         <p class="card-text">{{$event->description}}</p>
                     </div>
-                <div class="card-footer text-muted"> @if (Auth::user()->rol==='admin') <a type="button" class="btn btn-warning" href="{{route('events/edit', $event)}}">Editar</a>&nbsp;&nbsp;&nbsp;<a type="button" class="btn btn-danger">Eliminar</a>&nbsp;&nbsp;&nbsp;  @endif <a type="button" class="btn btn-success"><i class="bi bi-heart"></i></a></div>
-            </div>
+                    <div class="card-footer text-muted">
+                        @auth
+                            @if (Auth::user()->rol === 'admin')
+                                <a type="button" class="btn btn-warning" href="{{ route('events/edit', $event) }}">Editar</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a type="button" class="btn btn-danger">Eliminar</a>
+                                &nbsp;&nbsp;&nbsp;
+                            @endif
+                            <a type="button" class="btn btn-success"><i class="bi bi-heart"></i></a>
+                        @endauth
+                    </div>
+                </div>
         @empty
 
         @endforelse

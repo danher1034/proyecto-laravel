@@ -14,7 +14,7 @@ class LoginController extends Controller
     public function signupForm()
     {
         if(Auth::check()){
-            return redirect()->route('account');
+            return view('users.account');
         }else{
             return view('auth.signup');
         }
@@ -31,13 +31,13 @@ class LoginController extends Controller
 
         Auth:: Login($user);
 
-        return redirect()-route('/');
+        return view('users.account');
     }
 
     public function loginform()
     {
         if(Auth::check()){
-            return redirect()->route('account');
+            return view('users.account');
         }else{
             return view('auth.login');
         }
@@ -50,7 +50,7 @@ class LoginController extends Controller
 
         if(Auth::guard('web')->attempt($credentials, $remenberLogin)){
             $request->session()->regenerate();
-            return redirect()->route('account');
+            return view('users.account');
         } else{
             $error = 'La contraseña o el usuario son incorrectos o no existen, intentalo de nuevo';
             return view('auth.login', compact('error'));
@@ -62,7 +62,7 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('index');
+        return view('auth.login');
     }
 }
 

@@ -5,13 +5,19 @@
 @endsection
 
 @section('content')
-    <form action="{{route('events/edited',$event)}}" method="POST">
+    <form action="{{route('events/update',$event)}}" method="POST">
         @csrf
         @method('put')
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="name">Nombre evento:</label>
             <input type="text" name="name" id="name" value="{{$event->name}}" class="form-control">
+            <br>
+        </div> 
+
+        <div data-mdb-input-init class="form-outline mb-4">
+            <label for="description">Descripción:</label>
+            <input type="text" name="description" id="description" value="{{$event->description}}" class="form-control">
             <br>
         </div>
 
@@ -50,8 +56,8 @@
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <label for="visibility">Visible:</label>
-            <input type="checkbox" name="visibility" id="visibility" {{$event->visibility==1 ? 'checked' : ''}}>
+            <label for="visible">Visible:</label>
+            <input type="checkbox" name="visible" id="visible" value="{{$event->visible==1 ? 'checked' : ''}}">
             <br>
         </div>
 

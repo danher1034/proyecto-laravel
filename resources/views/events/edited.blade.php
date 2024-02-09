@@ -8,5 +8,5 @@
     <h1>Se ha editado con exito</h1>
     <br>
     <br>
-    <a href="{{route('events.show', $event)}}">Volver</a>
+    <a href="{{ route('events/show', $event)}}">Volver</a>
 @endsection

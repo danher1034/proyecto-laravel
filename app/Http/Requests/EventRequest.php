@@ -23,7 +23,7 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required','string','min:5','max:1000','unique:events'],
+            'name' => ['required','string','min:5','max:15'],
             'description'=> ['required','string','min:10','max:10000'],
             'location'=> ['required','string','min:3','max:1000'],
             'date' => ['required', 'date'],
@@ -39,8 +39,7 @@ class EventRequest extends FormRequest
             'name.required' => 'El nombre de usuario es obligatorio.',
             'name.string' => 'El nombre debe ser una cadena de texto.',
             'name.min' => 'El nombre de usuario debe tener como mínimo 5 caracteres.',
-            'name.max' => 'El nombre de usuario debe tener como máximo 1000 caracteres.',
-            'name.unique' => 'El nombre de usuario ya existe en el sistema.',
+            'name.max' => 'El nombre de usuario debe tener como máximo 15 caracteres.',
 
             'description.required'=>'El argumento es obligatorio',
             'description.string' => 'La descripción debe ser una cadena de texto.',
