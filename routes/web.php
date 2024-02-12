@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -33,5 +34,16 @@ Route::post('events/store', [EventController::class, 'store'])->name('events/sto
 Route::get('events/show/{event}', [EventController::class, 'show'])->name('events/show');
 Route::get('events/edit/{event}', [EventController::class, 'edit'])->name('events/edit');
 Route::put('events/update/{event}', [EventController::class, 'update'])->name('events/update');
+Route::get('events/destroy/{event}', [EventController::class, 'destroy'])->name('events/destroy');
+
+Route::get('players', [PlayerController::class, 'index'])->name('players');
+Route::get('players/create', [PlayerController::class, 'create'])->name('players/create');
+Route::post('players/store', [PlayerController::class, 'store'])->name('players/store');
+Route::get('players/show/{player}', [PlayerController::class, 'show'])->name('players/show');
+Route::get('players/edit/{player}', [PlayerController::class, 'edit'])->name('players/edit');
+Route::put('players/update/{player}', [PlayerController::class, 'update'])->name('players/update');
+Route::get('players/destroy/{player}', [PlayerController::class, 'destroy'])->name('players/destroy');
 
 Route::get('account', function() { return view('users.account'); })->name('account')->middleware('auth');
+
+Route::get('maps', function() { return view('maps.index'); })->name('maps');

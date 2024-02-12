@@ -10,10 +10,10 @@
                 <a class="nav-link" href="/events">Eventos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/players">Jugadores</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="/maps">¿Dónde estamos?</a>
             </li>
             </ul>
             <ul>

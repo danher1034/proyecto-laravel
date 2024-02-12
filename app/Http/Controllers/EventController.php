@@ -84,6 +84,7 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
+        $events = Event::where('visible',1)->paginate(6);
         return view('events.index', compact('events'));
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name',15);
+            $table->string('name',25);
             $table->text('twitter');
             $table->text('instagram');
             $table->text('twitch');
