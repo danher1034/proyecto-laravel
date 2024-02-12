@@ -14,7 +14,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::where('visible',1)->simplePaginate(9);
+        $players = Player::simplePaginate(9);
         return view('players.index', compact('players'));
     }
 
@@ -50,28 +50,20 @@ class PlayerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      */
-    public function edit(string $id)
+    public function visibility(Player $player)
     {
-        //
+        $player->visible=$player->visible==1?0:1;
+        $player->save();
+        return redirect()->route('players');
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Player $player)
     {
         $player->delete();
-        $players = Player::where('visible',1)->simplePaginate(9);
-        return view('players.index', compact('players'));
+        return redirect()->route('players');
     }
 }

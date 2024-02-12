@@ -36,7 +36,7 @@ class PlayersTableSeeder extends Seeder
             'Roman Yaremchuk',
             'Alberto Marí',
             'Hugo Duro',
-        ];                
+        ];
 
         foreach ($players as $playerName) {
             $formattedName = str_replace(' ', '', strtolower($playerName));

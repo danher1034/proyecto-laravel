@@ -43,6 +43,7 @@ Route::get('players/show/{player}', [PlayerController::class, 'show'])->name('pl
 Route::get('players/edit/{player}', [PlayerController::class, 'edit'])->name('players/edit');
 Route::put('players/update/{player}', [PlayerController::class, 'update'])->name('players/update');
 Route::get('players/destroy/{player}', [PlayerController::class, 'destroy'])->name('players/destroy');
+Route::get('players/visibility/{player}', [PlayerController::class, 'visibility'])->name('players/visibility');
 
 Route::get('account', function() { return view('users.account'); })->name('account')->middleware('auth');
 
