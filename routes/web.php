@@ -28,6 +28,8 @@ Route::post('signup', [LoginController::class, 'signup'])->name('signup');
 Route::get('loginForm', [LoginController::class, 'loginForm'])->name('loginForm');
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('users/edit/{user}', [LoginController::class, 'edit'])->name('users/edit');
+Route::put('users/update/{user}', [LoginController::class, 'update'])->name('users/update');
 
 Route::get('events', [EventController::class, 'index'])->name('events');
 Route::get('events/create', [EventController::class, 'create'])->name('events/create');
@@ -50,5 +52,8 @@ Route::get('account', function() { return view('users.account'); })->name('accou
 
 Route::get('maps', function() { return view('maps.index'); })->name('maps');
 
+Route::get('messages', [MessageController::class, 'index'])->name('messages');
 Route::get('messages/create', [MessageController::class, 'create'])->name('messages/create');
 Route::post('messages/store', [MessageController::class, 'store'])->name('messages/store');
+Route::get('messages/show/{message}', [MessageController::class, 'show'])->name('messages/show');
+Route::get('messages/destroy/{message}', [MessageController::class, 'destroy'])->name('messages/destroy');

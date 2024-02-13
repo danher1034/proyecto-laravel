@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-    <h1>Nueva película</h1>
+    <h1>Editar evento</h1>
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
             <label for="name">Nombre evento:</label>
             <input type="text" name="name" id="name" value="{{$event->name}}" class="form-control">
             <br>
-        </div> 
+        </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="description">Descripción:</label>

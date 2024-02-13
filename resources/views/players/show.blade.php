@@ -18,7 +18,7 @@
         <div class="card-footer text-muted">
           @auth
             @if (Auth::user()->rol==='admin')
-              <button type="button" class="btn btn-danger">Eliminar jugador</button>
+                <a type="button" class="btn btn-danger" href="{{route('players/destroy', $player)}}">Eliminar</a>
             @endif
           @endauth
         </div>

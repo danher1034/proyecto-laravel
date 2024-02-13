@@ -64,6 +64,28 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return view('auth.login');
     }
+
+
+    public function edit(User $User)
+    {
+        return view('users.edit', compact('User'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(SignupRequest $request, User $User)
+    {
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->birthday=$request->get('birthday');
+        $user->password = Hash:: make($request->get('password'));
+        $user->save();
+
+        return view('users.edited', compact('User'));
+    }
+
 }
 
 

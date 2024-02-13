@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+    public function index()
+    {
+        $messages = Message::orderby('created_at','desc')->get();
+        return view('messages.index', compact('messages'));
+    }
    /**
      * Show the form for creating a new resource.
      */
@@ -30,4 +35,18 @@ class MessageController extends Controller
 
         return view('messages.stored', compact('message'));
     }
+
+    public function show(Message $message)
+    {
+        $message->readed=$message->readed=1;
+        $message->save();
+        return view('messages.show', compact('message'));
+    }
+
+    public function destroy(Message $message)
+    {
+        $message->delete();
+        return redirect()->route('messages');
+    }
+
 }
