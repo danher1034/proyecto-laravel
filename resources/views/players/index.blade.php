@@ -25,14 +25,14 @@
                         </div>
                         <div class="card-footer text-muted">
                             @auth
-                                @if (Auth::user()->rol === 'admin')
+                                @if (Auth::user()->rol=='admin')
                                     <a type="button" class="btn btn-success" href="{{route('players/visibility', $player)}}"><i class="bi bi-eye-fill"></i></a>
                                     <a type="button" class="btn btn-danger" href="{{route('players/destroy', $player)}}">Eliminar</a>
                                 @endif
                             @endauth
                         </div>
                 </div>
-            @elseif ($player->visible == '0' && Auth::user()->rol === 'admin')
+            @elseif ($player->visible == '0' && Auth::check() && Auth::user()->rol=='admin')
                 <div class="card text-center">
                     <div class="card-header"><h2 class="card-title"><a class="link-secondary link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{route('players/show', $player)}}">{{$player->name}}</a></h2></div>
                         <div class="card-body">

@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -48,3 +49,6 @@ Route::get('players/visibility/{player}', [PlayerController::class, 'visibility'
 Route::get('account', function() { return view('users.account'); })->name('account')->middleware('auth');
 
 Route::get('maps', function() { return view('maps.index'); })->name('maps');
+
+Route::get('messages/create', [MessageController::class, 'create'])->name('messages/create');
+Route::post('messages/store', [MessageController::class, 'store'])->name('messages/store');

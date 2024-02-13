@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name',15);
             $table->text('subject');
             $table->text('text');
-            $table->boolean('readed')->default(1);
+            $table->boolean('readed')->default(0);
             $table->timestamps();
         });
     }
