@@ -13,6 +13,6 @@
     <br><br>
     Año de nacimiento: {{Auth::user()->birthday}}
     <br><br>
-
+    <a type="button" class="btn btn-warning" href="{{ route('users/edit', Auth::user()) }}">Editar</a>
 
 @endsection

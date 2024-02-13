@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{route('users/update',$event)}}" method="POST">
+    <form action="{{route('users/update',Auth::user())}}" method="POST">
         @csrf
         @method('put')
 
@@ -23,7 +23,7 @@
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <label for="password_confirmation"><div class="badge bg-secondary text-wrap" style="width: 6rem;">Opcional</div> Repite la nueva contraseña:</label><br>
+            <label for="password_confirmation"><div class="badge bg-secondary text-wrap" style="width: 6rem;">Opcional</div> Repite la nueva contraseña:</label><br><br>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
         </div>
         <br><br>
