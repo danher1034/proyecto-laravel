@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ConditionController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -57,3 +58,8 @@ Route::get('messages/create', [MessageController::class, 'create'])->name('messa
 Route::post('messages/store', [MessageController::class, 'store'])->name('messages/store');
 Route::get('messages/show/{message}', [MessageController::class, 'show'])->name('messages/show');
 Route::get('messages/destroy/{message}', [MessageController::class, 'destroy'])->name('messages/destroy');
+
+Route::get('config', [ConditionController::class, 'ConfigCookie'])->name('config');
+Route::get('cookiepolicity', [ConditionController::class, 'CookiePolicity'])->name('cookiepolicity');
+Route::get('privacitypolicity', [ConditionController::class, 'PrivacityPolicity'])->name('privacitypolicity');
+Route::get('terms', [ConditionController::class, 'Terms'])->name('terms');

@@ -6,7 +6,7 @@
             <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
+            href="/config"
             role="button"
             data-mdb-ripple-color="dark"
             >Configuración de cookies</a>
@@ -14,7 +14,7 @@
             <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
+            href="/cookiepolicity"
             role="button"
             data-mdb-ripple-color="dark"
             >Política de cookies</a>
@@ -22,7 +22,7 @@
             <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
+            href="/privacitypolicity"
             role="button"
             data-mdb-ripple-color="dark"
             >Políticas de privacidad</a>
@@ -30,7 +30,7 @@
             <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
+            href="/terms"
             role="button"
             data-mdb-ripple-color="dark"
             >Términos y condiciones de uso</a>
@@ -38,7 +38,7 @@
             <a
             data-mdb-ripple-init
             class="btn btn-link btn-floating btn-lg text-body m-1"
-            href="#!"
+            href="/messages/create"
             role="button"
             data-mdb-ripple-color="dark"
             >Contacto</a>
