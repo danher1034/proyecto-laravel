@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\SignupRequest;
+use App\Http\Requests\UsereditRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,29 +67,38 @@ class LoginController extends Controller
     }
 
 
-    public function edit(User $User)
+    public function edit(User $user)
     {
-        return view('users.edit', compact('User'));
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SignupRequest $request, User $User)
+    public function update(UsereditRequest $request, User $user)
     {
-        $user = new User();
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $user->birthday=$request->get('birthday');
-        $user->password = Hash:: make($request->get('password'));
-        $user->save();
 
-        return view('users.edited', compact('User'));
+        $credentials=[
+            'name' => Auth::user()->name,
+            'password' => $request->get('password'),
+        ];
+
+        if(Auth::guard('web')->attempt($credentials)){
+
+            $user->birthday = $request->get('birthday');
+            if ($request->filled('newpassword')) {
+                $user->password = Hash::make($request->get('newpassword'));
+            }
+            $user->save();
+            return view('users.edited');
+
+        } else{
+            $error = 'La contraseña es incorrecta, intentalo de nuevo';
+            return view('users.edit', compact('user','error'));
+        }
     }
 
 }
-
-
 
 
 

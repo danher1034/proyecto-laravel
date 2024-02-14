@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name',15);
+            $table->string('name',50);
             $table->decimal('price');
             $table->integer('stock');
             $table->timestamps();

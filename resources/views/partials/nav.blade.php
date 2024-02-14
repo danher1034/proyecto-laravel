@@ -18,6 +18,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/messages/create">Contacto</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products">Tienda</a>
+            </li>
             @if (Auth::check() && Auth::user()->rol=='admin')
                 <li class="nav-item">
                     <a class="nav-link" href="/messages">Mensajes</a>
