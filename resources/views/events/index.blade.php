@@ -29,10 +29,14 @@
                             @if (Auth::user()->rol === 'admin')
                                 <a type="button" class="btn btn-warning" href="{{ route('events/edit', $event) }}">Editar</a>
                                 &nbsp;&nbsp;&nbsp;
-                                <a type="button" class="btn btn-danger" href="{{route('events/destroy', $event)}}">Eliminar</a> 
+                                <a type="button" class="btn btn-danger" href="{{route('events/destroy', $event)}}">Eliminar</a>
                                 &nbsp;&nbsp;&nbsp;
                             @endif
-                            <a type="button" class="btn btn-success"><i class="bi bi-heart"></i></a>
+                            @if (Auth::user()->event()->where('event_id', $event->id)->count()>0)
+                                <a type="button" class="btn btn-success" href="{{route('events/like', $event)}}"><i class="bi bi-heart"></i></a>
+                            @else
+                                <a type="button" class="btn btn-danger" href="{{route('events/like', $event)}}"><i class="bi bi-heart"></i></a>
+                            @endif
                         @endauth
                     </div>
                 </div>

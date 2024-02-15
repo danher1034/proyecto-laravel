@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -78,6 +79,14 @@ class EventController extends Controller
         return view('events.edited', compact('event'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function like(Event $event)
+    {
+        $event->user()->toggle(Auth::user()->id);
+        return redirect()->route('events');
+    }
     /**
      * Remove the specified resource from storage.
      */

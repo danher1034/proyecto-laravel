@@ -36,10 +36,10 @@ class EventRequest extends FormRequest
     public function messages()
     {
         return[
-            'name.required' => 'El nombre de usuario es obligatorio.',
+            'name.required' => 'El nombre del evento es obligatorio.',
             'name.string' => 'El nombre debe ser una cadena de texto.',
-            'name.min' => 'El nombre de usuario debe tener como mínimo 5 caracteres.',
-            'name.max' => 'El nombre de usuario debe tener como máximo 15 caracteres.',
+            'name.min' => 'El nombre del evento debe tener como mínimo 5 caracteres.',
+            'name.max' => 'El nombre del evento debe tener como máximo 15 caracteres.',
 
             'description.required'=>'El argumento es obligatorio',
             'description.string' => 'La descripción debe ser una cadena de texto.',

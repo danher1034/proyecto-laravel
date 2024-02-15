@@ -40,6 +40,7 @@ Route::get('events/show/{event}', [EventController::class, 'show'])->name('event
 Route::get('events/edit/{event}', [EventController::class, 'edit'])->name('events/edit');
 Route::put('events/update/{event}', [EventController::class, 'update'])->name('events/update');
 Route::get('events/destroy/{event}', [EventController::class, 'destroy'])->name('events/destroy');
+Route::get('events/like/{event}', [EventController::class, 'like'])->name('events/like');
 
 Route::get('players', [PlayerController::class, 'index'])->name('players');
 Route::get('players/create', [PlayerController::class, 'create'])->name('players/create');
