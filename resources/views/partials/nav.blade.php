@@ -15,9 +15,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/maps">¿Dónde estamos?</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/messages/create">Contacto</a>
-            </li>
+            @if (Auth::check() && Auth::user()->rol=='member')
+                <li class="nav-item">
+                    <a class="nav-link" href="/messages/create">Contacto</a>
+                </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="/products">Tienda</a>
             </li>

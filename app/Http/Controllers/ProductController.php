@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index() //Muestra todos los productos con stock disponible
     {
-        $products = Product::simplePaginate(9);
+        $products = Product::where('stock', 1)->simplePaginate(9);
         return view('products.index', compact('products'));
     }
 }

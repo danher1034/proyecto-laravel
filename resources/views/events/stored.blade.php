@@ -8,5 +8,5 @@
     <h1>Se ha creado con exito</h1>
     <br>
     <br>
-    <a href="{{route('events')}}">Volver</a>
+    <a type="button" class="btn btn-secondary" href="{{route('events')}}">Volver</a>
 @endsection

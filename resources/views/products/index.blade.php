@@ -14,23 +14,27 @@
         @forelse ($products as $product)
             @if ($product->stock == '1')
                 <div class="card text-center">
-                    <div class="card-header"><h2 class="card-title"><a>{{$product->name}}</a></h2></div>
-                        <div class="card-body">
-                            <img width="250px" height="300px" src="/images/store/{{ str_replace(' ', '', strtolower($product->name)) }}.jpeg" alt="Foto de {{ $product->name }}">
-                        </div>
-                        <div class="card-footer text-muted">
-                            Stock disponible | {{$product->price}} €
-                        </div>
+                    <div class="card-header">
+                        <h2 class="card-title"><a>{{$product->name}}</a></h2>
+                    </div>
+                    <div class="card-body">
+                        <img width="250px" height="300px" src="/images/store/{{ str_replace(' ', '', strtolower($product->name)) }}.jpeg" alt="Foto de {{ $product->name }}">
+                    </div>
+                    <div class="card-footer text-muted">
+                        Stock disponible | {{$product->price}} €
+                    </div>
                 </div>
             @elseif ($product->stock == '0' && Auth::check() && Auth::user()->rol=='admin')
                 <div class="card text-center">
-                    <div class="card-header"><h2 class="card-title"><a>{{$product->name}}</a></h2></div>
-                        <div class="card-body">
-                            <img width="250px" height="300px" src="/images/store/{{ str_replace(' ', '', strtolower($product->name)) }}.jpge" alt="Foto de {{ $product->name }}">
-                        </div>
-                        <div class="card-footer text-muted">
-                            Stock no disponible | {{$product->price}} €
-                        </div>
+                    <div class="card-header">
+                        <h2 class="card-title"><a>{{$product->name}}</a></h2>
+                    </div>
+                    <div class="card-body">
+                        <img width="250px" height="300px" src="/images/store/{{ str_replace(' ', '', strtolower($product->name)) }}.jpge" alt="Foto de {{ $product->name }}">
+                    </div>
+                    <div class="card-footer text-muted">
+                        Stock no disponible | {{$product->price}} €
+                    </div>
                 </div>
             @endif
         @empty

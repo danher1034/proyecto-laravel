@@ -22,18 +22,20 @@ class MessageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject'=> ['string','min:3','max:100'],
-            'text'=> ['string','min:3','max:10000'],
+            'subject'=> ['required','string','min:3','max:100'],
+            'text'=> ['required','string','min:3','max:10000'],
         ];
     }
     public function messages()
     {
         return[
 
+            'subject.required' => 'El asunto del mensaje es obligatorio.',
             'subject.string' => 'El asunto debe ser una cadena de texto.',
             'subject.min'=>'El asunto debe tener al menos 3 caracteres',
             'subject.max'=>'El asunto debe tener menos de 100 caracteres',
 
+            'text.required' => 'La descripción del mensaje es obligatorio.',
             'text.string' => 'La descripción debe ser una cadena de texto.',
             'text.min'=>'La descripción debe tener al menos 3 caracteres',
             'text.max'=>'La descripción debe tener menos de 10000 caracteres',

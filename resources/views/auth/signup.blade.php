@@ -21,8 +21,9 @@
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="birthday">Cumpleaños:</label><br>
-            <input type="date" name="birthday" id="birthday"><br>
+            <input type="date" name="birthday" id="birthday" max="{{ now()->subYears(16)->format('Y-m-d') }}"><br>
         </div>
+
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label class="form-label" for="password">Contraseña</label>

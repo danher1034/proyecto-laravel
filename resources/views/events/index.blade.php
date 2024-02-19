@@ -33,9 +33,9 @@
                                 &nbsp;&nbsp;&nbsp;
                             @endif
                             @if (Auth::user()->event()->where('event_id', $event->id)->count()>0)
-                                <a type="button" class="btn btn-success" href="{{route('events/like', $event)}}"><i class="bi bi-heart"></i></a>
-                            @else
-                                <a type="button" class="btn btn-danger" href="{{route('events/like', $event)}}"><i class="bi bi-heart"></i></a>
+                                <a href="{{route('events/like', $event)}}"><i class="bi bi-heart-fill"></i></a>
+                            @else                               
+                                <a href="{{route('events/like', $event)}}"><i class="bi bi-heart"></i></a>
                             @endif
                         @endauth
                     </div>

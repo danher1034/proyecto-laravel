@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function signupForm()
+    public function signupForm() // Función para mostrar el formulario de registro
     {
-        if(Auth::check()){
+        if(Auth::check()){ // En caso de que el usuario ya este logueado redirige a su cuenta
             return view('users.account');
-        }else{
+        }else{ 
             return view('auth.signup');
         }
     }
 
-    public function signup (SignupRequest $request)
+    public function signup (SignupRequest $request) // Crea el usuario en la base de datos
     {
         $user = new User();
         $user->name = $request->get('name');
@@ -35,16 +35,16 @@ class LoginController extends Controller
         return view('users.account');
     }
 
-    public function loginform()
+    public function loginform() // Muestra el formulario para iniciar sesión
     {
-        if(Auth::check()){
+        if(Auth::check()){ // En caso de que el usuario ya este logueado redirige a su cuenta
             return view('users.account');
         }else{
             return view('auth.login');
         }
     }
 
-    public function login(Request $request)
+    public function login(Request $request) // Comprueba que el usuario y contraseña introducidos en el formulario de login sean correctos
     {
         $credentials= $request->only('name','password');
         $remenberLogin= ($request->get('remember')) ? true: false;
@@ -52,13 +52,13 @@ class LoginController extends Controller
         if(Auth::guard('web')->attempt($credentials, $remenberLogin)){
             $request->session()->regenerate();
             return view('users.account');
-        } else{
+        } else{ // Si no son correctos dará error
             $error = 'La contraseña o el usuario son incorrectos o no existen, intentalo de nuevo';
             return view('auth.login', compact('error'));
         }
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request) // Funcion para cerrar sesión
     {
         Auth::guard('web')->logout();
         $request->session()->invalidate();

@@ -14,7 +14,6 @@
             <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" />
         </div>
 
-
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="description" class="form-label">Descripcion:</label>
             <textarea name="description" id="description" value="{{old('description')}}" rows="3" class="form-control"></textarea>
@@ -29,14 +28,14 @@
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="date" class="form-label">Fecha del evento:</label><br>
-            <input type="date" name="date" id="date" class="form-control"><br>
+            <input type="date" name="date" id="date" class="form-control" min="{{ now()->format('Y-m-d') }}"><br>
         </div>
+
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="hour" class="form-label">Hora:</label>
             <input type="hour" name="hour" id="hour" class="form-control"><br>
         </div>
-
 
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="type" class="form-label">Tipo:</label>

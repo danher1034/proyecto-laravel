@@ -28,7 +28,7 @@
         </div>
 
         <div data-mdb-input-init class="form-outline mb-4">
-            <label for="date" class="form-label">Fecha del evento:</label><br>
+            <label for="date" class="form-label" min="{{ now()->format('Y-m-d') }}">Fecha del evento:</label><br>
             <input type="date" name="date" id="date" value="{{$event->date}}" class="form-control"><br>
         </div>
 

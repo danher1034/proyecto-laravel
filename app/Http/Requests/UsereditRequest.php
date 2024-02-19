@@ -23,7 +23,7 @@ class UsereditRequest extends FormRequest
     public function rules(): array
     {
         $rules= [
-            'birthday' => ['date'],
+            'birthday' => ['required', 'date', 'before_or_equal:' . now()->subYears(16)->format('Y-m-d')],
             'password' => ['required'],
         ];
 
@@ -37,9 +37,13 @@ class UsereditRequest extends FormRequest
     public function messages()
     {
         return[
-            'birthday.date' => 'El cumpleaños tiene que ser tipo fecha.',
+            
+            'password.required' => 'La contraseña es obligatoria.',
 
-            'newpassword.confirmed' => 'Las contraseñas no coinciden.',
+            'birthday.required' => 'El cumpleaños es obligatorio.',
+            'birthday.date' => 'El cumpleaños tiene que ser tipo fecha.',
+            'birthday.before_or_equal' => 'Tienes que tener más de 16 años.',
+
             'newpassword.confirmed' => 'Las contraseñas no coinciden.',
             'newpassword.min' => 'La contraseña debe tener como mínimo 8 caracteres.',
             'newpassword.string' => 'La contraseña debe ser una cadena de texto.',

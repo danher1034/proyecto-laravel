@@ -21,12 +21,15 @@
         </div>
 
         @if($errors->any())
-            Hay errores en el formulario: <br>
-            @foreach ($errors->all() as $error)
-                {{$error}} <br>
-            @endforeach
+            <div class="alert alert-danger" role="alert">
+                Hay errores en el formulario:
+                <br><br> 
+                @foreach ($errors->all() as $error)
+                    {{$error}} <br> 
+                @endforeach
+            </div><br>     
         @endif
-
+        <br>
         <input type="submit" value="enviar">
     </form>
     <br><br>
