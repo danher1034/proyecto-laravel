@@ -31,7 +31,6 @@
             <input type="date" name="date" id="date" class="form-control" min="{{ now()->format('Y-m-d') }}"><br>
         </div>
 
-
         <div data-mdb-input-init class="form-outline mb-4">
             <label for="hour" class="form-label">Hora:</label>
             <input type="hour" name="hour" id="hour" class="form-control"><br>
